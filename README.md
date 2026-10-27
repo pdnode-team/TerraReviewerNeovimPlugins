@@ -1,7 +1,23 @@
-# Tauri + SvelteKit + TypeScript
+# terra-reviewer.nvim
 
-This template should help get you started developing with Tauri, SvelteKit and TypeScript in Vite.
+Neovim client for the Terra waiting review queue. It calls one endpoint:
 
-## Recommended IDE Setup
+`GET https://api.terra.hackclub.com/review/queue?queue=review&filter=waiting`
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+## Install
+
+```lua
+{ "pdnode-team/TerraReviewerNeovimPlugins" }
+```
+
+Neovim 0.10 or newer, and `curl` on `PATH`.
+
+## Use
+
+```
+:TerraSetApiKey
+:TerraReview
+:TerraClearApiKey
+```
+
+The key is saved at `stdpath("data")/terra-reviewer/api_key`. `:TerraReview` opens a fullscreen floating window. `<CR>` opens the item in a small card over the list, `r` refreshes, and `y` yanks the review id. `q` closes the card, then the queue.
