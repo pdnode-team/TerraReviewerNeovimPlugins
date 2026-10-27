@@ -68,4 +68,23 @@ function M.clear_api_key()
 	end
 end
 
+-- local function fetch_queue()
+--   local api_key = M.get_api_key()
+--   if not  api_key then
+--     vim.notify("Please set API Key first!", vim.log.levels.WARN)
+--     return nil
+--   end
+--
+--   local url = "https://api.terra.hackclub.com/review?filter=waiting"
+--   local cmd = string.format(
+--     'curl -s -H "Authorization: Bearer %s" -H "Accept: application/json" "%s"',
+--     api_key, url
+--   )
+--
+--   local result = vim.fn.system(cmd)
+--   local ok, data = pcall(vim.json.decode, result)
+--   if not ok or not data or not data.items then
+--     vim.notify("Cannot get ", level, opts)
+-- end
+
 return M
